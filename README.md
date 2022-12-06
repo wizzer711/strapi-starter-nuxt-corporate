@@ -1,0 +1,1 @@
+# strapi-starter-nuxt-corporate
