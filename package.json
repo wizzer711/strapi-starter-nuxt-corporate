@@ -1,0 +1,8 @@
+{
+    "name": "strapi-starter-nuxt-corporate",
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wizzer711/strapi-starter-nuxt-corporate.git"
+    }
+}
