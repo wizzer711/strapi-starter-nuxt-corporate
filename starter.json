@@ -1,3 +1,6 @@
 {
-    "template": "https://github.com/wizzer711/strapi-template-brand"
+    "template": {
+        "name": "wizzer711/strapi-template-brand",
+        "version": "^1.0.0"
+    }
 }
