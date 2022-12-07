@@ -7,7 +7,7 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
-    "@headlessui/vue": "^1.74",
+    "@headlessui/vue": "^1.7.4",
     "@heroicons/vue": "^2.0.13",
     "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge",
     "@nuxtjs/partytown": "^1.3.0",
