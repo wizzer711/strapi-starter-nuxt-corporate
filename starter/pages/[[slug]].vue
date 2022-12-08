@@ -55,18 +55,18 @@
       'filters[slug]': slug
     }
   )
+  const page = useGet(data.data[0], 'attributes', null)
   data = useGet(data.data[0], 'attributes', null)
   data = useGet(data, 'ribbons', null)
 
   // Throw 404 if page not found
+  const noPage = isEmpty(page)
   const noData = isEmpty(data)
-  if(noData){
-      throwError(
-      createError({
-        statusCode: 404,
-        statusMessage: 'Page Not Found',
-      })
-    );
+  if(noData && noPage){
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Page Not Found',
+    })
   }
 
   // Set MetaDetails
@@ -76,13 +76,13 @@
 
   // Get global brand details and put into store
   let { data: globals } = await useFetch('http://localhost:8080/api/brand-details?populate=deep&filters[brand]=stablepoint')
-  globals = useGet(globals.value.data[0], 'attributes', {})
+  globals = isNull(globals.value) ? {} : useGet(globals.value.data[0], 'attributes', {})
   useState('brandDetails', () => globals)
 
   // Get hreflang language data
   const hreflangFilter = useGet(data, 'hreflangOverride', slug)
   let { data: hreflangsData } = await useFetch(`http://localhost:8080/api/hreflang-mappings?populate=*&filters[slug]=${hreflangFilter}`)
-  hreflangsData = useGet(hreflangsData.value.data[0], 'attributes', {})
+  hreflangsData = isNull(hreflangsData.value) ? {} : useGet(hreflangsData.value.data[0], 'attributes', {})
   hreflangsData = useGet(hreflangsData, 'hreflangs', {})
 
   // Currency
